@@ -197,6 +197,7 @@ int main(int argc, char *argv[])
             else if(ni>0)
                 T = tframe-vTimestampsCam[seq][ni-1];
 
+            std::cout << "T: " << T << std::endl;
             if(ttrack<T)
                 usleep((T-ttrack)*1e6); // 1e6
         }
