@@ -761,6 +761,7 @@ void System::SaveKeyFrameTrajectoryEuRoC(const string &filename)
         }
     }
     f.close();
+    cout << endl << "End of saving keyframe trajectory to " << filename << " ..." << endl;
 }
 
 void System::SaveTrajectoryKITTI(const string &filename)

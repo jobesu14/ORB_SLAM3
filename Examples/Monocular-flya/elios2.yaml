@@ -3,7 +3,8 @@
 #--------------------------------------------------------------------------------------------
 # Camera Parameters. Adjust them!
 #--------------------------------------------------------------------------------------------
-Camera.type: "PinHole"
+#Camera.type: "PinHole"
+Camera.type: "KannalaBrandt8"
 
 # Camera calibration and distortion parameters (OpenCV) 
 Camera.fx: 433.771122847867
@@ -25,27 +26,6 @@ Camera.fps: 29.97
 
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1
-
-# Transformation from camera to body-frame (imu)
-Tbc: !!opencv-matrix
-   rows: 4
-   cols: 4
-   dt: f
-   data: [0.9998492719582422, 0.01003946408144224, 0.014164834115895746, -0.021811436715778218,
-         0.010137471210085278, -0.9999250537828718, -0.00686429128068303, -0.005339882292945551,
-         0.014094858709405533, 0.0070068522375457635, -0.9998761118157006, -0.010715939286577185,
-         0.0, 0.0, 0.0, 1.0]
-
-# IMU noise
-#IMU.NoiseGyro: 1.7e-4 #1.6968e-04 
-#IMU.NoiseAcc: 2.0000e-3 #2.0e-3
-#IMU.GyroWalk: 1.9393e-05 
-#IMU.AccWalk: 3.0000e-03 # 3e-03
-IMU.NoiseGyro: 5.0e-4 #1.6968e-04 
-IMU.NoiseAcc: 2.0e-3 #2.0e-3
-IMU.GyroWalk: 1.0e-06 
-IMU.AccWalk: 1.5e-04 # 3e-03
-IMU.Frequency: 1000
 
 #--------------------------------------------------------------------------------------------
 # ORB Parameters

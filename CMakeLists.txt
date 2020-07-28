@@ -203,3 +203,9 @@ add_executable(mono_inertial_flya
 Examples/Monocular-Inertial-flya/mono_inertial_flya.cc)
 target_link_libraries(mono_inertial_flya ${PROJECT_NAME})
 
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Examples/Monocular-flya)
+
+add_executable(mono_flya
+Examples/Monocular-flya/mono_flya.cc)
+target_link_libraries(mono_flya ${PROJECT_NAME})

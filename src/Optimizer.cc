@@ -3997,17 +3997,24 @@ int Optimizer::OptimizeSim3(KeyFrame *pKF1, KeyFrame *pKF2, vector<MapPoint *> &
     int nOutKF2 = 0;
     int nMatchWithoutMP = 0;
 
+    cv::Mat img1;
+    cv::Mat img2;
+
+    if(bShowImages)
+    {
 #ifdef OPENCV4
-    cv::Mat img1 = cv::imread(pKF1->mNameFile, cv::IMREAD_UNCHANGED);
-    cv::cvtColor(img1, img1, cv::COLOR_GRAY2BGR);
-    cv::Mat img2 = cv::imread(pKF2->mNameFile, cv::IMREAD_UNCHANGED);
-    cv::cvtColor(img2, img2, cv::COLOR_GRAY2BGR);
+        img1 = cv::imread(pKF1->mNameFile, cv::IMREAD_UNCHANGED);
+        cv::cvtColor(img1, img1, cv::COLOR_GRAY2BGR);
+        img2 = cv::imread(pKF2->mNameFile, cv::IMREAD_UNCHANGED);
+        cv::cvtColor(img2, img2, cv::COLOR_GRAY2BGR);
 #else
-    cv::Mat img1 = cv::imread(pKF1->mNameFile, CV_LOAD_IMAGE_UNCHANGED);
-    cv::cvtColor(img1, img1, CV_GRAY2BGR);
-    cv::Mat img2 = cv::imread(pKF2->mNameFile, CV_LOAD_IMAGE_UNCHANGED);
-    cv::cvtColor(img2, img2, CV_GRAY2BGR);
+        img1 = cv::imread(pKF1->mNameFile, CV_LOAD_IMAGE_UNCHANGED);
+        cv::cvtColor(img1, img1, CV_GRAY2BGR);
+        img2 = cv::imread(pKF2->mNameFile, CV_LOAD_IMAGE_UNCHANGED);
+        cv::cvtColor(img2, img2, CV_GRAY2BGR);
 #endif
+    }
+
     vector<int> vIdsOnlyInKF2;
 
     for(int i=0; i<N; i++)
@@ -4073,7 +4080,8 @@ int Optimizer::OptimizeSim3(KeyFrame *pKF1, KeyFrame *pKF2, vector<MapPoint *> &
                 vIdsOnlyInKF2.push_back(id2);
             }
 
-            cv::circle(img1, pKF1->mvKeys[i].pt, 1, cv::Scalar(0, 0, 255));
+            if(!img1.empty())
+                cv::circle(img1, pKF1->mvKeys[i].pt, 1, cv::Scalar(0, 0, 255));
 
             continue;
 
